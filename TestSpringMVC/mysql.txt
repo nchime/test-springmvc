@@ -1,0 +1,19 @@
+CREATE DEFINER=`root`@`%` PROCEDURE `testinsert_procedure`()
+BEGIN
+
+DECLARE i INT DEFAULT 1;
+#	DECLARE log_date VARCHAR(255);	
+		
+	WHILE i <= 10000 DO
+#		SET log_date = DATE_FORMAT(DATE_SUB(NOW(), INTERVAL i DAY), '%Y%m%d');
+#		INSERT INTO Å×ÀÌºí (LOG_DATE, INVENTORY_ID, REQ_CNT) VALUES (log_date, '0x2011', 3000000);
+        insert into tlb_log(msg, ip_adress, reg_date, kind_cd, active_cd) values ( concat( FLOOR(RAND() * 1000), '-test'), '127.0.0.1', now(), '01', '1');
+        insert into tlb_log(msg, ip_adress, reg_date, kind_cd, active_cd) values ( concat( FLOOR(RAND() * 1000), '-test'), '127.0.0.1', now(), '02', '1');
+        insert into tlb_log(msg, ip_adress, reg_date, kind_cd, active_cd) values ( concat( FLOOR(RAND() * 1000), '-test'), '127.0.0.1', now(), '01', '0');
+        
+		SET i = i + 1;
+	END WHILE;
+
+
+
+END
